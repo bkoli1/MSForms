@@ -104,3 +104,30 @@ button[type="submit"]:hover {
   margin-bottom: 0.6rem;
   line-height: 1.4;
 }
+
+
+/* Center the page title */
+h1 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+/* Center the material selector label */
+label[for="material"] {
+  display: block;
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+/* Style and center the select dropdown */
+#material {
+  display: block;
+  margin: 0 auto 2rem;
+  padding: 0.5rem;
+  font-size: 1rem;
+  max-width: 300px;
+  width: 100%;
+  border: 1px solid #bbb;
+  border-radius: 4px;
+}
