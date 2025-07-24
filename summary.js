@@ -23,27 +23,27 @@ if (!stored.material) {
       const el = key.slice(5);
       const { min, max } = reqs.chemical_composition.elements[el];
       pass  = (min == null || val >= min) && (max == null || val <= max);
-      range = `${min != null ? min : "–"}–${max != null ? max : "–"}`;
+      range = `${min != null ? min : "-"}-${max != null ? max : "-"}`;
 
     // 2) Yield & Tensile
     } else if (["yield_strength","tensile_strength"].includes(key)) {
       const rr  = reqs.mechanical_properties[key];
       const min = rr.min.psi, max = rr.max?.psi;
       pass  = (min == null || val >= min) && (max == null || val <= max);
-      range = `${min != null ? min : "–"}–${max != null ? max : "–"}`;
+      range = `${min != null ? min : "-"}-${max != null ? max : "-"}`;
 
     // 3) Elongation & Reduction of area
     } else if (["elongation","reduction_of_area"].includes(key)) {
       const rr  = reqs.mechanical_properties[key];
       const min = rr.min_percent, max = rr.max_percent;
       pass  = (min == null || val >= min) && (max == null || val <= max);
-      range = `${min != null ? min : "–"}–${max != null ? max : "–"}%`;
+      range = `${min != null ? min : "-"}-${max != null ? max : "-"}%`;
 
     // 4) Hardness HBW
     } else if (key === "hardness_hbw") {
       const { min, max } = reqs.mechanical_properties.hardness_hbw;
       pass  = (val >= min) && (val <= max);
-      range = `${min}–${max}`;
+      range = `${min}-${max}`;
 
     // 5) Hardness test checkboxes
     } else if (["rockwell","brinell"].includes(key)) {
@@ -71,7 +71,7 @@ if (!stored.material) {
       const row   = reqs.impact_testing.tables[table][idx];
       const min   = row.min_avg_impact_ftlbs;
       pass  = (min == null) || (val >= min);
-      range = min != null ? `≥ ${min}` : "–";
+      range = min != null ? `≥ ${min}` : "-";
 
     } else {
       // skip any unhandled keys (e.g. ht_type)
