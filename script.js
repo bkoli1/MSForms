@@ -1,6 +1,3 @@
-
-
-
 document.addEventListener("DOMContentLoaded", () => {
   const sel = document.getElementById("material");
   const form = document.getElementById("dynamic-form");
