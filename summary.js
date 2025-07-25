@@ -23,7 +23,15 @@ if (!stored.material) {
       const el = key.slice(5);
       const { min, max } = reqs.chemical_composition.elements[el];
       pass  = (min == null || val >= min) && (max == null || val <= max);
-      range = `${min != null ? min : "-"}-${max != null ? max : "-"}`;
+      if (min != null && max != null) {
+       range = `${min}-${max}`;
+      } else if (min != null) {
+        range = `≥ ${min}`;
+      } else if (max != null) {
+        range = `≤ ${max}`;
+      } else {
+        range = "-";
+      }
 
     // 2) Yield & Tensile
     } else if (["yield_strength","tensile_strength"].includes(key)) {

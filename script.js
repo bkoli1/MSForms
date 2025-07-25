@@ -108,11 +108,13 @@ function renderSection(key, mat) {
         html += `<strong>${tableKey}</strong><br>`;
         req.tables[tableKey].forEach((row,i) => {
           const label = row.class || row.temperature_classification;
+          if (row.min_avg_impact_ftlbs !== null && row.min_avg_impact_ftlbs !== undefined) {
           html += `
-            <label>${label} Avg Impact (ft-lb):
+              <label>${label} Avg Impact (ft-lb):
               <input name="${tableKey}_${i}" type="number" required>
-            </label><br>
+              </label><br>
           `;
+        }
         });
       }
       break;
